@@ -1,0 +1,30 @@
+From 309a89975a50bf53c408233a1bb5b10fd579ca30 Mon Sep 17 00:00:00 2001
+From: "Signed-off-by: Shijoe Panjikkaran" <spanjikk@redhat.com>
+Date: Wed, 30 Apr 2014 13:19:34 -0400
+Subject: [PATCH] nss: use strrchr() instead of strchr() to get the last
+ occurrence of "@"
+
+Signed-off-by: Shijoe Panjikkaran <spanjikk@redhat.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+
+Origin: https://github.com/Distrotech/libnfsidmap/commit/309a89975
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=924425
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/libnfsidmap/+bug/1819197
+Last-Update: 2019-03-15
+---
+ nss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nss.c b/nss.c
+index b2b1227..f8129fe 100644
+--- a/nss.c
++++ b/nss.c
+@@ -135,7 +135,7 @@ static char *strip_domain(const char *name, const char *domain)
+ 	char *l = NULL;
+ 	int len;
+ 
+-	c = strchr(name, '@');
++	c = strrchr(name, '@');
+ 	if (c == NULL && domain != NULL)
+ 		goto out;
+ 	if (c == NULL && domain == NULL) {

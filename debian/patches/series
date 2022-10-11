@@ -1,0 +1,3 @@
+01-661215-wrong-double-ldap-check.patch
+02-idmapd.conf.5.patch
+03-uid-map-krb5.patch
